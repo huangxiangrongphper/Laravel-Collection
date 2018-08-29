@@ -1,0 +1,6 @@
+{
+    "require": {
+        "illuminate/support": "^5.6",
+        "pandeydip/dump-die": "^1.0"
+    }
+}
