@@ -1,50 +1,27 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-$orders = [[
-    'id'            =>      1,
-    'user_id'       =>      1,
-    'number'        =>      '13908080808',
-    'status'        =>      0,
-    'fee'           =>      10,
-    'discount'      =>      44,
-    'order_products'=> [
-        ['order_id'=>1,'product_id'=>1,'param'=>'6寸','price'=>555.00,'product'=>['id'=>1,'name'=>'蛋糕名称','images'=>[]]],
-        ['order_id'=>1,'product_id'=>1,'param'=>'7寸','price'=>333.00,'product'=>['id'=>1,'name'=>'蛋糕名称','images'=>[]]],
-    ],
-]];
+$gates = [
+    'BaiYun_A_A17',
+    'BeiJing_J7',
+    'ShuangLiu_k203',
+    'HongQiao_A157',
+    'A2',//['A2']
+    'BaiYun_B_B230'
+];
 
-/*$price = 0 ;
+$boards = collect($gates)->map(function($gate){
+    return collect(explode('_',$gate))->last();
+})->toArray();
 
-foreach ($orders as $order) {
-    foreach ($order['order_products'] as $order_product){
-        $price += $order_product['price'];
-    }
-}
-*/
-/*dump(collect($orders)->flatMap(function($order){
-    return $order['order_products'];
-})->sum('price'));*/
-
-/*dump(collect($orders)->pluck('order_products.*.price')->flatten(1)->sum());*/
-
-/*dump(array_sum(data_get($orders, '*.order_products.*.price')));*/
+dd($boards);
 
 
-dump(collect($orders)->pluck('order_products')->flatten(1)->sum('price')); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//上面的数组转换为下面的形式
+$boards = [
+    'A17',
+    'J7',
+    'K203',
+    'A2',
+    'B230'
+];
